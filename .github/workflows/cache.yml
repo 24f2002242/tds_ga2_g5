@@ -1,16 +1,16 @@
-name: CI with Cache
+name: Email Step Workflow
 
 on:
   push:
     branches: [ main ]
   pull_request:
 
-
-      
 jobs:
-  build:
-    runs-on: ubuntu-latest
   test:
+    runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: 24f2002242@ds.study.iitm.ac.in
         run: echo "Hello, world!"
