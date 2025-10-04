@@ -8,12 +8,20 @@ import os
 
 app = FastAPI()
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# Allow all origins, methods, headers
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=["*"],       # Allow all domains
+    allow_credentials=True,    # Allow cookies/auth if needed
+    allow_methods=["*"],       # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],       # Allow all headers
 )
+
 
 class RequestBody(BaseModel):
     regions: list[str]
