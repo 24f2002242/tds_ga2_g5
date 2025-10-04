@@ -5,16 +5,15 @@ on:
     branches: [ main ]
   pull_request:
 
-jobs:
-  test:
-    steps:
-      - name: 24f2002242@ds.study.iitm.ac.in
-        run: echo "Hello, world!"
+
       
 jobs:
   build:
     runs-on: ubuntu-latest
-
+  test:
+    steps:
+      - name: 24f2002242@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
