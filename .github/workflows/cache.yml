@@ -14,24 +14,3 @@ jobs:
     steps:
       - name: 24f2002242@ds.study.iitm.ac.in
         run: echo "Hello, world!"
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: prime-cache-163155e
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: cache-163155e
-
-      - name: Echo cache result
-        run: echo "Cache hit? ${{ steps.cache.outputs.cache-hit }}"
-
-      - name: Install deps
-        run: pip install -r requirements.txt
