@@ -1,4 +1,4 @@
-name: CI with Cache
+name: prime-cache-163155e
 
 on:
   push:
