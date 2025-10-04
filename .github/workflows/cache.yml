@@ -1,4 +1,4 @@
-name: prime-cache-163155e
+name: CI with Cache
 
 on:
   push:
@@ -8,25 +8,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: prime-cache-163155e
-        id: cache
+      # Cache dependencies (example: Node.js dependencies)
+      - name: Cache Node modules
+        id: cache-node-modules
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pip
+          path: |
+            ~/.npm
+            node_modules
           key: cache-163155e
+          restore-keys: |
+            cache-163155e
 
-      - name: Echo cache result
-        run: echo "Cache hit? ${{ steps.cache.outputs.cache-hit }}"
-
-      - name: Install deps
-        run: pip install -r requirements.txt
+      # Step to prime the cache and show hit/miss
+      - name: prime-cache-163155e
+        run: |
+          if [ "${{ steps.cache-node-modules.outputs.cache-hit }}" == "true" ]; then
+            echo "Cache hit!"
+          else
+            echo "Cache miss!"
+          fi
